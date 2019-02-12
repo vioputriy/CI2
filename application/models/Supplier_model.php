@@ -1,25 +1,25 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Customer_model extends CI_Model
+class Supplier_model extends CI_Model
 {
-    private $_table = "customer";
+    private $_table = "supplier";
 
-    public $customer_id;
-    public $name;
-    public $address;
+    public $Supplier_id;
+    public $Supplier_name;
+    public $Supplier_address;
 
     public function rules()
     {
         return [
-            ['field' => 'customer_id',
-            'label' => 'Customer_id',
+            ['field' => 'Supplier_id',
+            'label' => 'Supplier_id',
             'rules' => 'numberic'],
 
-            ['field' => 'name',
+            ['field' => 'Supplier_name',
             'label' => 'Name',
             'rules' => 'required'],
             
-            ['field' => 'address',
+            ['field' => 'Supplier_address',
             'label' => 'address',
             'rules' => 'required']
         ];
@@ -38,7 +38,7 @@ class Customer_model extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        $this->customer_id = uniqid();
+        $this->supplier_id = uniqid();
         $this->name = $post["name"];
         $this->address= $post["address"];
         $this->db->insert($this->_table, $this);
@@ -47,10 +47,10 @@ class Customer_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->product_id = $post["id"];
-        $this->name = $post["name"];
-        $this->description = $post["address"];
-        $this->db->update($this->_table, $this, array('customer_id' => $post['id']));
+        $this->_id = $post["Supplier_id"];
+        $this->name = $post["Supplier_name"];
+        $this->description = $post["Supplier_address"];
+        $this->db->update($this->_table, $this, array('Supplier_id' => $post['id']));
     }
 
     public function delete($id)
